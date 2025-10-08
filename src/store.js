@@ -4,5 +4,6 @@ import cartReducer from './CartSlice';
     reducer: {
         cart: cartReducer,
     },
+    devTools: true, // Enable Redux DevTools
 });
 export default store

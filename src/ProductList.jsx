@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./ProductList.css";
 import CartItem from "./CartItem";
 import { addItem } from "./CartSlice";
@@ -9,6 +9,9 @@ function ProductList({ onHomeClick }) {
   const [showPlants, setShowPlants] = useState(true); // Show plants by default
   const [addedToCart, setAddedToCart] = useState({});
   const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.items);
+  const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+
 
   const plantsArray = [
     {
@@ -259,7 +262,7 @@ function ProductList({ onHomeClick }) {
     padding: "15px",
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center", // fixed typo here
+    alignItems: "center",
     fontSize: "20px",
   };
 
@@ -267,7 +270,7 @@ function ProductList({ onHomeClick }) {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "1100px",
+    gap: "50px", // Add a gap between the links
   };
 
   const styleA = {
@@ -348,6 +351,9 @@ function ProductList({ onHomeClick }) {
                     strokeWidth="2"
                     id="mainIconPathAttribute"
                   ></path>
+                  {totalQuantity > 0 && (
+                    <span className="cart_quantity_count">{totalQuantity}</span>
+                  )}
                 </svg>
               </h1>
             </a>
