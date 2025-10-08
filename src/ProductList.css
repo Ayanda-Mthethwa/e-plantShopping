@@ -47,6 +47,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 .product-list {
     display: flex;
     flex-wrap: wrap;
@@ -110,6 +111,8 @@ body {
 .product-button:hover {
     background-color: #c0392b;
 }
+
+
 
 /* Pseudo-elements - Sale badge */
 .product-card::before {
