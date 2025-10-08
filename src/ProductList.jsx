@@ -6,7 +6,7 @@ import { addItem } from "./CartSlice";
 
 function ProductList({ onHomeClick }) {
   const [showCart, setShowCart] = useState(false);
-  const [showPlants, setShowPlants] = useState(false);
+  const [showPlants, setShowPlants] = useState(true); // Show plants by default
   const [addedToCart, setAddedToCart] = useState({});
   const dispatch = useDispatch();
 
@@ -295,6 +295,7 @@ function ProductList({ onHomeClick }) {
   const handleContinueShopping = (e) => {
     e.preventDefault();
     setShowCart(false);
+    setShowPlants(true);
   };
 
   const handleAddToCart = (product) => {
@@ -354,7 +355,7 @@ function ProductList({ onHomeClick }) {
         </div>
       </div>
 
-      {!showCart ? (
+      {showPlants && !showCart ? (
         <div className="product-grid">
           <div className="product-list">
             {plantsArray.map((category) =>
@@ -380,8 +381,10 @@ function ProductList({ onHomeClick }) {
             )}
           </div>
         </div>
-      ) : (
+      ) : showCart ? (
         <CartItem onContinueShopping={handleContinueShopping} />
+      ) : (
+        <div></div> // Placeholder for when neither cart nor plants are shown
       )}
     </div>
   );
