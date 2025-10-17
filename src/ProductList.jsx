@@ -4,14 +4,15 @@ import "./ProductList.css";
 import CartItem from "./CartItem";
 import { addItem } from "./CartSlice";
 
+
 function ProductList({ onHomeClick }) {
+
   const [showCart, setShowCart] = useState(false);
   const [showPlants, setShowPlants] = useState(true); // Show plants by default
   const [addedToCart, setAddedToCart] = useState({});
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
   const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
-
 
   const plantsArray = [
     {
@@ -308,7 +309,7 @@ function ProductList({ onHomeClick }) {
 
   return (
     <div>
-    
+
       <div className="navbar" style={styleObj}>
         <div className="tag">
           <div className="luxury">
