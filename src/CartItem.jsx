@@ -52,7 +52,7 @@ const CartItem = ({ onContinueShopping }) => {
                 <div className="cart-item-total">
                   Total: ${calculateTotalCost(item)}
                 </div>
-                <button className="cart-item-delete" onClick={() => handleRemoveItem(item)}>Remove</button>
+                <button className="cart-item-delete" onClick={() => handleRemoveItem(item)}>Delete</button>
               </div>
             </div>
           ))}
